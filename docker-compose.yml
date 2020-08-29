@@ -16,16 +16,14 @@ services:
       - postgres
     restart: always
 
-  pgadmin:
-    container_name: pgadmin_container
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${POSTGRES_USER}
-      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_PASSWORD}
+    
+  adminer:
+    container_name: adminer
+    image: adminer
     volumes:
-      - ./pgadmin:/var/lib/pgadmin:Z
+      - ./adminer:/var/lib/pgadmin:Z
     ports:
-      - "5050:80"
+      - 8080:8080
     networks:
       - postgres
     restart: always
